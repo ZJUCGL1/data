@@ -34,7 +34,7 @@ def main():
     print("3. Retrieving text data...")
     text_data = retriever.retrieve('data/sample.txt')
     print(f"   Text length: {len(text_data)} characters")
-    print(f"   First line: {text_data.split(chr(10))[0]}")
+    print(f"   First line: {text_data.split('\\n')[0]}")
     print()
     
     # Example 4: Using configuration
