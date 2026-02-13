@@ -1,0 +1,9 @@
+This is a sample text file for the data retrieval system.
+
+It contains multi-line text data that can be retrieved
+and processed by the data retrieval module.
+
+Lines:
+- Line 1: Sample data
+- Line 2: More sample data
+- Line 3: Additional information

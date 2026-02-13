@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "description": "Configuration for data retrieval system",
+  "data_sources": [
+    {
+      "name": "sample_json",
+      "type": "json",
+      "path": "data/sample.json"
+    },
+    {
+      "name": "sample_csv",
+      "type": "csv",
+      "path": "data/sample.csv"
+    }
+  ],
+  "default_source": "sample_json"
+}

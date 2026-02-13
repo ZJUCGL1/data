@@ -1,0 +1,25 @@
+{
+  "name": "Sample Dataset",
+  "version": "1.0",
+  "description": "A sample JSON dataset for demonstrating data retrieval",
+  "data": [
+    {
+      "id": 1,
+      "name": "Item One",
+      "category": "Category A",
+      "value": 100
+    },
+    {
+      "id": 2,
+      "name": "Item Two",
+      "category": "Category B",
+      "value": 200
+    },
+    {
+      "id": 3,
+      "name": "Item Three",
+      "category": "Category A",
+      "value": 150
+    }
+  ]
+}
