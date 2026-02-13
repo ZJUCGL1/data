@@ -54,7 +54,14 @@ data = retriever.retrieve('data/sample.json', source_type='json')
 ## Running the Example
 
 ```bash
+# Run the comprehensive example demonstrating all features
+python example.py
+
+# Run the main module
 python data_retrieval.py
+
+# Run the test suite
+python test_data_retrieval.py
 ```
 
 ## Configuration
@@ -80,8 +87,11 @@ The `config.json` file allows you to define data sources:
 ```
 .
 ├── README.md              # This file
+├── .gitignore             # Git ignore file
 ├── data_retrieval.py      # Main data retrieval module
 ├── config.json            # Configuration file
+├── example.py             # Example usage script
+├── test_data_retrieval.py # Test suite
 └── data/                  # Sample data directory
     ├── sample.json        # Sample JSON data
     ├── sample.csv         # Sample CSV data

@@ -78,6 +78,35 @@ def test_config_loading():
     print("✓ Configuration loading test passed")
 
 
+def test_error_handling():
+    """Test error handling for missing files."""
+    print("Testing error handling...")
+    retriever = DataRetriever()
+    
+    # Test missing JSON file
+    try:
+        retriever.retrieve('nonexistent.json')
+        assert False, "Should raise FileNotFoundError"
+    except FileNotFoundError:
+        pass  # Expected
+    
+    # Test missing CSV file
+    try:
+        retriever.retrieve('nonexistent.csv')
+        assert False, "Should raise FileNotFoundError"
+    except FileNotFoundError:
+        pass  # Expected
+    
+    # Test missing text file
+    try:
+        retriever.retrieve('nonexistent.txt')
+        assert False, "Should raise FileNotFoundError"
+    except FileNotFoundError:
+        pass  # Expected
+    
+    print("✓ Error handling test passed")
+
+
 def run_all_tests():
     """Run all tests."""
     print("=" * 60)
@@ -91,6 +120,7 @@ def run_all_tests():
         test_retrieve_text,
         test_auto_detection,
         test_config_loading,
+        test_error_handling,
     ]
     
     passed = 0

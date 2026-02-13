@@ -30,9 +30,18 @@ class DataRetriever:
         
         Args:
             config_path: Path to the configuration file
+            
+        Raises:
+            FileNotFoundError: If the config file doesn't exist
+            json.JSONDecodeError: If the config file is not valid JSON
         """
-        with open(config_path, 'r') as f:
-            self.config = json.load(f)
+        try:
+            with open(config_path, 'r', encoding='utf-8') as f:
+                self.config = json.load(f)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Configuration file not found: {config_path}")
+        except json.JSONDecodeError as e:
+            raise json.JSONDecodeError(f"Invalid JSON in config file: {e.msg}", e.doc, e.pos)
     
     def retrieve_from_json(self, file_path: str) -> Dict[str, Any]:
         """
@@ -43,9 +52,18 @@ class DataRetriever:
             
         Returns:
             Dictionary containing the JSON data
+            
+        Raises:
+            FileNotFoundError: If the file doesn't exist
+            json.JSONDecodeError: If the file is not valid JSON
         """
-        with open(file_path, 'r') as f:
-            return json.load(f)
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"JSON file not found: {file_path}")
+        except json.JSONDecodeError as e:
+            raise json.JSONDecodeError(f"Invalid JSON in file: {e.msg}", e.doc, e.pos)
     
     def retrieve_from_csv(self, file_path: str) -> List[Dict[str, Any]]:
         """
@@ -56,13 +74,20 @@ class DataRetriever:
             
         Returns:
             List of dictionaries containing the CSV data
+            
+        Raises:
+            FileNotFoundError: If the file doesn't exist
+            csv.Error: If the file is not valid CSV
         """
-        data = []
-        with open(file_path, 'r') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                data.append(dict(row))
-        return data
+        try:
+            data = []
+            with open(file_path, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    data.append(dict(row))
+            return data
+        except FileNotFoundError:
+            raise FileNotFoundError(f"CSV file not found: {file_path}")
     
     def retrieve_from_text(self, file_path: str) -> str:
         """
@@ -73,9 +98,15 @@ class DataRetriever:
             
         Returns:
             String containing the text data
+            
+        Raises:
+            FileNotFoundError: If the file doesn't exist
         """
-        with open(file_path, 'r') as f:
-            return f.read()
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Text file not found: {file_path}")
     
     def retrieve(self, source: str, source_type: str = 'auto') -> Any:
         """
